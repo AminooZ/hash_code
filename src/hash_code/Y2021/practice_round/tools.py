@@ -1,4 +1,9 @@
+import logging
+
+
 def format_input(content):
+    logger = logging.getLogger()
+    logger.info(f'Formatting input')
     header, body = content[0], content[1:]
     nb_pizza, nb_t2, nb_t3, nb_t4 = [int(x) for x in header]
     pizzas = list()
@@ -10,6 +15,8 @@ def format_input(content):
 
 
 def format_output(orders, separator=" "):
+    logger = logging.getLogger()
+    logger.info(f'Formatting output')
     header = str(len(orders))
     body = list()
     for order in orders:

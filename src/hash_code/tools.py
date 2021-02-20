@@ -1,5 +1,9 @@
+import logging
+
 
 def read_file(path, line_terminator="\n", separator=" "):
+    logger = logging.getLogger()
+    logger.info(f'Reading {path}')
     f = open(path, "r")
     text = f.read().strip()
     lines = text.split(line_terminator)
@@ -8,6 +12,8 @@ def read_file(path, line_terminator="\n", separator=" "):
 
 
 def write_file(content, path, line_terminator="\n"):
+    logger = logging.getLogger()
+    logger.info(f'Writing {path}')
     text = line_terminator.join(content)
     f = open(path, "w")
     f.write(text)

@@ -7,7 +7,7 @@ from src.hash_code.tools import read_file
 from src.hash_code.tools import write_file
 
 if __name__ == '__main__':
-    file_name = "a_example"
+    file_name = "d_many_pizzas.in"
     in_path = os.path.join("../../../../data/Y2021/practice_round/", file_name)
     out_path = os.path.join("../../../../submissions/Y2021/practice_round/", file_name)
     in_content = read_file(path=in_path)

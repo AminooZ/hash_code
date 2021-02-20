@@ -1,4 +1,7 @@
+import logging
 from collections import defaultdict
+
+from tqdm import tqdm
 
 
 class Storage:
@@ -44,19 +47,24 @@ class Storage:
 
 
 def make_solution(nb_pizza, nb_t2, nb_t3, nb_t4, pizzas):
+    logger = logging.getLogger()
+    logger.info(f'Preparing {nb_pizza} pizzas')
     orders = list()
     storage = Storage()
-    for pizza in pizzas:
+    for pizza in tqdm(pizzas):
         storage.add_pizza(pizza=pizza)
     assert nb_pizza == storage.get_remaining_pizzas()
     teams = sorted([2 for _ in range(nb_t2)] \
                    + [3 for _ in range(nb_t3)] \
                    + [4 for _ in range(nb_t4)])
+    logger.info(f'Fulfilling orders: {nb_t2} teams of 2, {nb_t3} teams of 3, and {nb_t4} teams of 4.')
+    p_bar = tqdm(total=len(teams))
     while len(teams) > 0:
         size = teams.pop(-1)
         if size <= storage.get_remaining_pizzas():
             order = fulfill_order(size=size, storage=storage)
             orders.append(order)
+        p_bar.update(1)
     return orders
 
 
