@@ -14,5 +14,5 @@ def write_file(content, path, line_terminator="\n"):
 
 
 if __name__ == "__main__":
-    example = read_file("../../data/2021/practice_round/a_example")
+    example = read_file("../../data/Y2021/practice_round/a_example")
     print(example)

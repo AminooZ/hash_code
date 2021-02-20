@@ -1,5 +1,5 @@
 import pytest
-from hash_code.Y2021.practice_round.tools import format_input
+from src.hash_code.Y2021.practice_round.tools import format_input
 
 
 @pytest.mark.parametrize("content,expected", [

@@ -10,10 +10,10 @@ def format_input(content):
 
 
 def format_output(orders, separator=" "):
-    header = len(orders)
+    header = str(len(orders))
     body = list()
     for order in orders:
-        body.append(len(order))
-        body.append(separator.join(order))
+        line = [str(len(order))] + [str(pizza) for pizza in order]
+        body.append(separator.join(line))
     content = [header] + body
     return content

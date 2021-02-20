@@ -48,7 +48,7 @@ def make_solution(nb_pizza, nb_t2, nb_t3, nb_t4, pizzas):
     storage = Storage()
     for pizza in pizzas:
         storage.add_pizza(pizza=pizza)
-    assert nb_pizza - 1 == storage.get_remaining_pizzas()
+    assert nb_pizza == storage.get_remaining_pizzas()
     teams = sorted([2 for _ in range(nb_t2)] \
                    + [3 for _ in range(nb_t3)] \
                    + [4 for _ in range(nb_t4)])
@@ -65,7 +65,7 @@ def fulfill_order(size, storage):
     used_ingredients = set()
     for _ in range(size):
         pizza = storage.get_pizza(excluded=used_ingredients)
-        id = storage.remove_pizza(excluded=pizza)
+        id = storage.remove_pizza(pizza=pizza)
         order.append(id)
         used_ingredients.update(pizza)
     return order
