@@ -1,5 +1,4 @@
 import logging
-import os
 from collections import defaultdict
 from math import ceil
 
@@ -24,14 +23,16 @@ class City:
     def build_weights(self):
         for intersection, streets in self.in_intersections.items():
             total_traffic = sum([self.traffic[street] for street in streets])
-            self.weights[intersection] = {
-                street: self.traffic[street] / total_traffic for street in streets
-            }
+            if total_traffic > 0:
+                self.weights[intersection] = {
+                    street: self.traffic[street] / total_traffic for street in streets
+                    if self.traffic[street] > 0
+                }
 
     def build_scheduler_v0(self, lift=2):
         scheduler = {
             intersection: {
-                street: ceil(lift * weight / sum(traffic.values()))
+                street: ceil(lift * weight * sum(traffic.values()))
                 for street, weight in traffic.items()
             }
             for intersection, traffic in self.weights.items()
