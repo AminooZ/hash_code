@@ -5,7 +5,7 @@ from hash_code.Y2021.qualification_round.solution import make_solution
 from hash_code.Y2021.qualification_round.tools import format_input
 from hash_code.Y2021.qualification_round.tools import format_output
 from hash_code.tools import write_file
-from src.hash_code.tools import read_file
+from hash_code.tools import read_file
 
 if __name__ == '__main__':
     files = [

@@ -32,7 +32,7 @@ class City:
     def build_scheduler_v0(self, lift=2):
         scheduler = {
             intersection: {
-                street: ceil(lift * weight * sum(traffic.values()))
+                street: ceil(lift * weight * len(traffic.keys()))
                 for street, weight in traffic.items()
             }
             for intersection, traffic in self.weights.items()
